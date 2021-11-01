@@ -1,0 +1,152 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Tapping Maina", "LightTheme")
+
+local Tab = Window:NewTab("Farming")
+
+local Section = Tab:NewSection("AutoTap")
+
+Section:NewToggle("Auto Tap ", "Tap to get corrceny", function(state)
+    if state then
+    getgenv().AutoTap = true -- true turns it on, false turn it off
+    while getgenv().AutoTap == true do 
+    game:GetService("ReplicatedStorage").RemoteEvents.Click:FireServer()
+    wait()
+    end
+else
+    getgenv().AutoTap = false -- true turns it on, false turn it off
+    while getgenv().AutoTap == true do 
+    game:GetService("ReplicatedStorage").RemoteEvents.Click:FireServer()
+    wait()
+    end
+    end
+end)
+
+local Section = Tab:NewSection("CollectGems")
+
+Section:NewToggle("Gems", "It Get gems that spawn", function(state)
+    if state then
+        getgenv().Gem = true -- true turns it on, false turn it off
+        local playerHead = game.Players.LocalPlayer.Character.Head 
+        for i,v in pairs(game:GetService("Workspace").GemsYes:GetDescendants()) do 
+            if v.Name == "TouchInterest" and v.Parent then 
+            firetouchinterest(playerHead, v.Parent, 0)
+            wait(0.1)
+            firetouchinterest(playerHead, v.Parent, 1)
+            end
+        end 
+    else
+        getgenv().Gem = false -- true turns it on, false turn it off
+        local playerHead = game.Players.LocalPlayer.Character.Head 
+        for i,v in pairs(game:GetService("Workspace").GemsYes:GetDescendants()) do 
+            if v.Name == "TouchInterest" and v.Parent then 
+            firetouchinterest(playerHead, v.Parent, 0)
+            wait(0.1)
+            firetouchinterest(playerHead, v.Parent, 1)
+            end
+        end 
+    end
+end)
+
+local Section = Tab:NewSection("AutoRebrith")
+
+Section:NewToggle("AutoRebrith", "It rebrith automaticly", function(state)
+    if state then
+        getgenv().AutoRebrith = true    -- true turns it on, false turn it off
+        while getgenv().AutoRebrith == true do 
+    local args = {
+    [1] = 1,
+    [2] = true}
+    game:GetService("ReplicatedStorage").RemoteEvents.Rebirth:FireServer(unpack(args))
+    wait()
+end
+    else
+        getgenv().AutoRebrith = false   -- true turns it on, false turn it off
+        while getgenv().AutoRebrith == true do 
+    local args = {
+    [1] = 1,
+    [2] = true}
+    game:GetService("ReplicatedStorage").RemoteEvents.Rebirth:FireServer(unpack(args))
+    wait()
+end
+    end
+end)
+
+-----New Section-----
+local Tab = Window:NewTab("PetStuff")
+
+local Section = Tab:NewSection("Spawn egg ")
+
+Section:NewToggle("BuyBaisc Egg ", "Buy baisc egg", function(state)
+    if state then
+    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(94.6450043, 4.57998085, 61.9472923, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    getgenv().HatchBaiscEgg = true 
+    while getgenv().HatchBaiscEgg == true do 
+local args = {
+    [1] = "Basic Egg",
+    [2] = true,
+    [4] = true,
+    [5] = {
+        ["1"] = false,
+        ["4"] = false,
+        ["3"] = false,
+        ["2"] = false}}
+game:GetService("ReplicatedStorage").RemoteEvents.OpenEgg:FireServer(unpack(args))
+        wait()
+        end 
+    else
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(94.6450043, 4.57998085, 61.9472923, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        getgenv().HatchBaiscEgg = false
+         while getgenv().HatchBaiscEgg == true do 
+local args = {
+    [1] = "Basic Egg",
+    [2] = true,
+    [4] = true,
+    [5] = {
+        ["1"] = false,
+        ["4"] = false,
+        ["3"] = false,
+        ["2"] = false}}
+game:GetService("ReplicatedStorage").RemoteEvents.OpenEgg:FireServer(unpack(args))
+        wait()
+        end
+    end
+end)
+
+local Section = Tab:NewSection("Epicc Egg")
+
+Section:NewToggle("Epic egg", "Buy Epic Egg", function(state)
+    if state then
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(85.1792221, 4.57998085, 70.5875168, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        getgenv.HatchRareEgg = true 
+        while getgenv().HatchEpicEgg == true do 
+    local args = {
+    [1] = "Rare Egg",
+    [2] = true,
+    [4] = true,
+    [5] = {
+        ["1"] = false,
+        ["4"] = false,
+        ["3"] = false,
+        ["2"] = false}}
+game:GetService("ReplicatedStorage").RemoteEvents.OpenEgg:FireServer(unpack(args))
+            wait()
+        end 
+    else
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(85.1792221, 4.57998085, 70.5875168, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        getgenv.HatchRareEgg = false 
+        while getgenv().HatchEpicEgg == true do 
+local args = {
+    [1] = "Rare Egg",
+    [2] = true,
+    [4] = true,
+    [5] = {
+        ["1"] = false,
+        ["4"] = false,
+        ["3"] = false,
+        ["2"] = false}}
+game:GetService("ReplicatedStorage").RemoteEvents.OpenEgg:FireServer(unpack(args))
+            wait()
+        end
+    end
+end)
